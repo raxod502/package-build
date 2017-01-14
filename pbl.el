@@ -154,7 +154,7 @@ A number as third arg means request confirmation if NEWNAME already exists."
   (if (and (file-exists-p newname)
            (not ok-if-already-exists))
       (error "Opening output file: File already exists, %s" newname))
-  (let ((buffer (url-retrieve-synchronously url))
+  (let ((buffer (url-retrieve-synchronously url 'silent))
         (headers nil)
         (handle nil))
     (if (not buffer)
