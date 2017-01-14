@@ -1530,7 +1530,6 @@ If FILE-NAME is not specified, the default archive-contents file is used."
 
 ;; Local Variables:
 ;; coding: utf-8
-;; checkdoc-minor-mode: 1
 ;; End:
 
 ;;; pbl.el ends here
