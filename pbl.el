@@ -37,7 +37,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'package)
 
 (defgroup pbl nil
   "Facilities for building package.el-compliant packages from upstream source code."
