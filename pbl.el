@@ -317,13 +317,18 @@ Return a cons cell whose `car' is the root and whose `cdr' is the repository."
         (when (file-exists-p dir)
           (delete-directory dir t))
         (pbl--run-process nil "git" "clone" repo dir)))
-      (pbl--update-git-to-ref dir (or commit (concat "origin/" (pbl--git-head-branch dir)))))))
+      (pbl--update-git-to-ref dir (or commit (concat "origin/" (pbl--git-head-branch dir)))
+                              (plist-get config :nonrecursive)))))
 
-(defun pbl--update-git-to-ref (dir ref)
+(defun pbl--update-git-to-ref (dir ref &optional nonrecursive)
   "Update the git repo in DIR so that HEAD is REF."
   (pbl--run-process dir "git" "reset" "--hard" ref)
   (pbl--run-process dir "git" "submodule" "sync" "--recursive")
-  (pbl--run-process dir "git" "submodule" "update" "--init" "--recursive"))
+  (let ((args `("git" "submodule" "update"
+                ,@(unless nonrecursive
+                    (list "--init"))
+                "--recursive")))
+    (apply #'pbl--run-process dir args)))
 
 (defun pbl--checkout-github (name config dir)
   "Check package NAME with config CONFIG out of github into DIR."
