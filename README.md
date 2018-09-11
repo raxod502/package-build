@@ -1,4 +1,4 @@
-# DEPRECATED: pbl
+# DEPRECATED: `pbl`
 
 > `package-build` *lite*
 
@@ -12,7 +12,7 @@ routines that `straight.el` used to clone repositories and to parse
 Since MELPA and `package-build` are licensed under the GNU Public
 License, and `straight.el` is licensed under the MIT License, it was
 impossible to include any code from `package-build` directly in
-`straight.el`, unfortunately. This is why pbl was maintained in a
+`straight.el`, unfortunately. This is why `pbl` was maintained in a
 separate repository; I included it in `straight.el` as a Git
 submodule.
 
